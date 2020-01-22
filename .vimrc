@@ -11,7 +11,7 @@ Plugin 'git://github.com/hail2u/vim-css3-syntax.git'
 
 Plugin 'cakebaker/scss-syntax.vim'
 
-Plugin 'https://github.com/shmargum/vim-sass-colors.git'
+Plugin 'git://github.com/shmargum/vim-sass-colors.git'
 
 Plugin 'scrooloose/nerdtree'
 
@@ -23,6 +23,23 @@ Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'git://github.com/felixhummel/setcolors.vim.git'
+
+Plugin 'git://github.com/Yggdroot/indentLine.git'
+
+Plugin 'mattn/emmet-vim'
+
+Plugin 'tridactyl/vim-tridactyl'
+
+Plugin 'VimOutliner'
+
+Plugin 'haml.zip'
+
+Plugin 'vimwiki/vimwiki'
+
+
 
 
 
@@ -32,6 +49,7 @@ call vundle#end()
 filetype plugin indent on
 
 syntax enable
+
 
 
 
@@ -54,6 +72,12 @@ set lazyredraw
 
 " For regular expressions turn magic on
 set magic
+
+" Sets up invisibles, off by default; toggle with f3
+:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+
+set noswapfile
+
 
 
 
@@ -90,7 +114,7 @@ set shiftwidth=2    	"Turns indentation into 2 spaces
 
 
 " Shift-enter inserts a newline above
-nmap <S-Enter> O<Esc>
+nmap <S>-<CR> O<Esc>
 " Enter inserts a newline below
 nmap <CR> o<Esc>
 
@@ -104,6 +128,13 @@ vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Assigns directory tree view to ctrl-n
 map <c-n> :NERDTreeToggle<CR>
+
+
+" F3: Toggle list (display unprintable characters).
+nnoremap <F3> :set list!<CR>
+
+" <gf> defaults to creating new file when none can be found
+:map gf :e <cfile><CR>
 
 
 
@@ -186,3 +217,15 @@ augroup END
 
 " Highlights YAML frontmatter
 let g:vim_markdown_frontmatter = 1
+
+
+
+
+
+" -- vim-emmet
+
+
+let g:user_emmet_leader_key='<M-,>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,scss EmmetInstall
+
