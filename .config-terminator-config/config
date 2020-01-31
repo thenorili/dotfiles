@@ -1,0 +1,162 @@
+[global_config]
+  focus = system
+  borderless = True
+  broadcast_default = off
+  title_hide_sizetext = True
+  suppress_multiple_term_dialog = True
+  always_split_with_profile = True
+  title_use_system_font = False
+  title_font = IBM Plex Mono Bold 9
+[keybindings]
+[profiles]
+  [[default]]
+    allow_bold = False
+    cursor_shape = underline
+    cursor_color = "#aaaaaa"
+    font = IBM Plex Mono weight=453 12
+    foreground_color = "#e53c00"
+    scrollback_lines = 1500
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    login_shell = True
+    use_system_font = False
+  [[default__Chalk]]
+    background_color = "#2b2d2e"
+    cursor_shape = underline
+    cursor_color = "#708284"
+    font = IBM Plex Mono weight=453 12
+    foreground_color = "#d2d8d9"
+    scrollback_lines = 1500
+    palette = "#7d8b8f:#b23a52:#789b6a:#b9ac4a:#2a7fac:#bd4f5a:#44a799:#d2d8d9:#888888:#f24840:#80c470:#ffeb62:#4196ff:#fc5275:#53cdbd:#d2d8d9"
+    login_shell = True
+    use_system_font = False
+  [[default__SeafoamPastel]]
+    background_color = "#243435"
+    cursor_shape = underline
+    cursor_color = "#57647a"
+    font = IBM Plex Mono weight=453 12
+    foreground_color = "#d4e7d4"
+    scrollback_lines = 1500
+    palette = "#757575:#825d4d:#728c62:#ada16d:#4d7b82:#8a7267:#729494:#e0e0e0:#8a8a8a:#cf937a:#98d9aa:#fae79d:#7ac3cf:#d6b2a1:#ade0e0:#e0e0e0"
+    login_shell = True
+    use_system_font = False
+  [[default__BlulocoDark]]
+    background_color = "#1e2127"
+    cursor_shape = underline
+    cursor_color = "#fec309"
+    font = IBM Plex Mono weight=453 12
+    foreground_color = "#abb2bf"
+    scrollback_lines = 1500
+    palette = "#4a505d:#f81141:#23974a:#fd7e57:#285bff:#8c62fd:#366f9a:#ccd5e5:#61697a:#fc4a6d:#37bd58:#f6be48:#199ffd:#fc58f6:#50acae:#ffffff"
+    login_shell = True
+    use_system_font = False
+  [[default__NoColor]]
+    cursor_shape = underline
+    cursor_color = "#aaaaaa"
+    font = IBM Plex Mono weight=453 12
+    scrollback_lines = 1500
+    login_shell = True
+    use_system_font = False
+  [[default--sm__NoColor]]
+    cursor_color = "#aaaaaa"
+    font = IBM Plex Mono weight=453 9
+    login_shell = True
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default__NoColor
+      command = ""
+      directory = ""
+  [[sitedev]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 755:0
+      maximised = False
+      fullscreen = False
+      size = 1165, 985
+      title = nori@noribox: ~
+      last_active_term = b70d68d1-bdb3-4387-9f12-65c39580ec2f
+      last_active_window = False
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 490
+      ratio = 0.5
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default__BlulocoDark
+      uuid = b70d68d1-bdb3-4387-9f12-65c39580ec2f
+      command = cd /home/nori/dev/00norili/src/assets/css && vim -c "NERDTree"; bash
+      directory = ""
+    [[[terminal3]]]
+      type = Terminal
+      parent = child1
+      order = 1
+      profile = default__BlulocoDark
+      uuid = 5bbc4ccf-fca9-4463-9848-167810f2510a
+      command = cd /home/nori/dev/00norili/src && vim -c "NERDTree"; bash
+      directory = ""
+    [[[child4]]]
+      type = Window
+      parent = ""
+      order = 1
+      position = 0:0
+      maximised = False
+      fullscreen = False
+      size = 755, 80
+      title = nori@noribox: ~
+      last_active_term = 1654e0e5-22ef-4fe0-ae99-e774b8c7ce0a
+      last_active_window = True
+    [[[child5]]]
+      type = HPaned
+      parent = child4
+      order = 0
+      position = 375
+      ratio = 0.5
+    [[[terminal6]]]
+      type = Terminal
+      parent = child5
+      order = 0
+      profile = default--sm__SeafoamPastel
+      command = cd /home/nori/dev/00norili && git diff; bash
+      uuid = 63c6c5f5-b827-48f3-bc81-451f7e413ebb
+      directory = ""
+    [[[terminal7]]]
+      type = Terminal
+      parent = child5
+      order = 1
+      profile = default--sm__NoColor
+      command = cd /home/nori/dev/00norili && bundle exec jekyll serve --incremental; bash
+      uuid = 1654e0e5-22ef-4fe0-ae99-e774b8c7ce0a
+      directory = ""
+  [[vim00]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 960:0
+      maximised = False
+      fullscreen = False
+      size = 811, 547
+      title = nori@noribox: ~
+      last_active_term = f0359cbe-bcc5-4451-9bbf-a35e286c0e69
+      last_active_window = True
+    [[[terminal1]]]
+      type = Terminal
+      parent = child0
+      order = 0
+      profile = default__NoColor
+      uuid = f0359cbe-bcc5-4451-9bbf-a35e286c0e69
+      directory = ~
+      command = vim; bash
+[plugins]

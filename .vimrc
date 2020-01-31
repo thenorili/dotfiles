@@ -21,6 +21,8 @@ Plugin 'plasticboy/vim-markdown'
 
 Plugin 'vim-ruby/vim-ruby'
 
+Plugin 'git://github.com/suewonjp/vim-jumparound'
+
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'flazz/vim-colorschemes'
@@ -35,7 +37,7 @@ Plugin 'tridactyl/vim-tridactyl'
 
 Plugin 'VimOutliner'
 
-Plugin 'haml.zip'
+Plugin 'git://github.com/tpope/vim-haml'
 
 Plugin 'vimwiki/vimwiki'
 
@@ -126,10 +128,6 @@ vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 
-" Assigns directory tree view to ctrl-n
-map <c-n> :NERDTreeToggle<CR>
-
-
 " F3: Toggle list (display unprintable characters).
 nnoremap <F3> :set list!<CR>
 
@@ -157,10 +155,10 @@ endfunc
 
 
 " Maps RLN toggle to ctrl-t
-map <c-t> :call TRelative()<cr>
+map <LEADER>r :call TRelative()<cr>
 
-" Maps LN toggle to ctrl-shift-t
-map <c-s-t> :call TNumber()<cr>
+" Maps LN toggle to ctrl-t
+map <LEADER>t :call TNumber()<cr>
 
 
 
@@ -228,4 +226,20 @@ let g:vim_markdown_frontmatter = 1
 let g:user_emmet_leader_key='<M-,>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,scss EmmetInstall
+
+
+
+
+
+" -- NERDTree
+
+  " opens NERDTree when opening vim with no argument or directory as argument 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+  " toggles NERDTree with ctrl-n
+map <c-n> :NERDTreeToggle<CR>
+
+
 
