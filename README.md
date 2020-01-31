@@ -49,9 +49,9 @@
 
 ### 4. autokey
 
-  + <M-d>=2020Jan31
+  + M-d = 2020Jan31
   
-  + <M-D>=2020-0131-1818
+  + M-D = 2020-0131-1818
 
 ### 5. terminator-config
 
