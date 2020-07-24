@@ -120,31 +120,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
 if [ $TILIX_ID ] || [ $VTE_VERSION ] ; then source /etc/profile.d/vte.sh; fi # Ubuntu Budgie END
-
-# add pip-installes executables accessible
-export PATH=~/.local/bin:$PATH
-
-# virtualenvwrapper settings
-export WORKON_HOME=~/.envs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source ~/.local/bin/virtualenvwrapper.sh
-
-export PATH="$HOME/.n/bin:$PATH"
-export NPM_PACKAGES="/home/nori/node_modules/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
-export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
-
 
 
 ### Functions
