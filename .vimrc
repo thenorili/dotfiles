@@ -21,8 +21,6 @@ Plugin 'plasticboy/vim-markdown'
 
 Plugin 'vim-ruby/vim-ruby'
 
-Plugin 'git://github.com/suewonjp/vim-jumparound'
-
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'flazz/vim-colorschemes'
