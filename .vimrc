@@ -3,42 +3,25 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'git://github.com/VundleVim/Vundle.vim'
 
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'git://github.com/scrooloose/nerdcommenter'
 
-Plugin 'git://github.com/hail2u/vim-css3-syntax.git'
+Plugin 'git://github.com/scrooloose/nerdtree'
 
-Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'git://github.com/godlygeek/tabular'
 
-Plugin 'git://github.com/shmargum/vim-sass-colors.git'
+Plugin 'git://github.com/plasticboy/vim-markdown'
 
-Plugin 'scrooloose/nerdtree'
+Plugin 'git://github.com/tpope/vim-fugitive'
 
-Plugin 'godlygeek/tabular'
-
-Plugin 'plasticboy/vim-markdown'
-
-Plugin 'vim-ruby/vim-ruby'
-
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'flazz/vim-colorschemes'
+Plugin 'git://github.com/flazz/vim-colorschemes'
 
 Plugin 'git://github.com/felixhummel/setcolors.vim.git'
 
 Plugin 'git://github.com/Yggdroot/indentLine.git'
 
-Plugin 'mattn/emmet-vim'
-
-Plugin 'tridactyl/vim-tridactyl'
-
-Plugin 'VimOutliner'
-
-Plugin 'git://github.com/tpope/vim-haml'
-
-Plugin 'vimwiki/vimwiki'
-
+Plugin 'git://github.com/vimoutliner/VimOutliner'
 
 
 
