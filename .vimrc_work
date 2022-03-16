@@ -49,8 +49,6 @@ Plugin 'https://github.com/ojroques/vim-oscyank.git'
 
 
 
-
-
 call vundle#end()
 
 filetype plugin indent on
@@ -59,11 +57,7 @@ syntax enable
 
 
 
-
-
 " -- Misc
-
-
 
 " Highlight past column 80
 highlight ColorColumn ctermbg=red
@@ -98,10 +92,7 @@ set autowrite
 
 
 
-
-
 " -- Search
-
 
 " Ignore case when searching
 set ignorecase
@@ -117,10 +108,7 @@ set incsearch
 
 
 
-
-
 " -- Tab
-
 
 set expandtab	      	"Turns \t into \s
 set tabstop=3	      	"Turns \t into 2 spaces
@@ -128,8 +116,9 @@ set shiftwidth=3    	"Turns indentation into 2 spaces
 set cindent
 set autoindent
 
-" -- Mappings
 
+
+" -- Mappings
 
 " Shift-enter inserts a newline above
 nmap <S>-<CR> O<Esc>
@@ -149,8 +138,6 @@ nnoremap <F3> :set list!<CR>
 
 " <gf> defaults to creating new file when none can be found
 :map gf :e <cfile><CR>
-
-
 
 
 
@@ -178,8 +165,6 @@ map <LEADER>t :call TNumber()<cr>
 
 
 
-
-
 " -- Commenting
 
 
@@ -188,8 +173,6 @@ map <Leader>[ i/* ==============================================================
 
 " Maps \] to a close comment horizontal ruler
 map <Leader>] i   ========================================================================== */<ESC>
-
-
 
 
 
@@ -250,12 +233,16 @@ let g:ycm_use_clangd = 0
 " clipboard
 vnoremap <leader>c :OSCYank<CR>
 
+
+
 " Terminal mode remappings
+
 " Esc key should return you to normal mode
 tnoremap <ESC> <C-\><C-n>
 " C-v Esc should send a "verbatim esc" to the terminal
 tnoremap <C-v><Esc> <Esc>
 " M-{h,j,k,l} should move windows -- these aren't working right now :/
+
 " Terminal mode:
 tnoremap <M-h> <C-\><c-n><c-w>h
 tnoremap <M-j> <C-\><c-n><c-w>j
