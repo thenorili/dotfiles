@@ -121,22 +121,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-if [ $TILIX_ID ] || [ $VTE_VERSION ] ; then source /etc/profile.d/vte.sh; fi # Ubuntu Budgie END
-
-
-### Functions
-
-
-
-cd () {
-  command cd "$1" && clear && pwd && lsd
-}
-
-
-mkdir () {
-  command mkdir "$1" && cd "$1" 
-}
-
-
 set +x
