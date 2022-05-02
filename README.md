@@ -13,3 +13,7 @@ TODO: I want DOSesque colors for VIM
 TODO: I want coc working properly
 
 TODO: I want to get gtags genuinely working well
+
+TODO: get things properly in folders
+
+TODO: get automated push/pull working
