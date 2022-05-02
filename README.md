@@ -17,3 +17,7 @@ TODO: I want to get gtags genuinely working well
 TODO: get things properly in folders
 
 TODO: get automated push/pull working
+
+TODO: get some of my fish functions imported
+
+TODO: push my inner tmux.conf files here
