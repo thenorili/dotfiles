@@ -12,7 +12,8 @@ call dein#add('neovim/nvim-lspconfig')
 
 call dein#add('scrooloose/nerdcommenter.git')
 
-call dein#add('scrooloose/nerdtree.git')
+call dein#add('scrooloose/nerdtree.git', {
+\               'hook_post_update': 'TSUpdate'})
 
 call dein#add('godlygeek/tabular.git')
 
@@ -21,14 +22,14 @@ call dein#add('plasticboy/vim-markdown.git', {
 
 call dein#add('tpope/vim-fugitive.git')
 call dein#add('christoomey/vim-conflicted.git', {
-\               'depends': 'tpope/vim-fugitive.git'})
+\               'depends': 'vim-fugitive.git'})
 
 call dein#add('mhinz/vim-signify')
 
 call dein#add('airblade/vim-gitgutter', {
 \               'depends':
-\                   ['tpope/vim-fugitive.git',
-\                    'mhinz/vim-signify']})
+\                   ['vim-fugitive.git',
+\                    'vim-signify']})
 
 call dein#add('flazz/vim-colorschemes.git')
 
@@ -41,7 +42,7 @@ call dein#add('vimoutliner/VimOutliner.git')
 call dein#add('edkolev/tmuxline.vim')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes', {
-\               'depends': 'vim-airline/vim-airline'})
+\               'depends': 'vim-airline'})
 
 call dein#add('inkarkat/vim-ingo-library')
 
@@ -58,27 +59,29 @@ call dein#add('nvim-lua/plenary.nvim')
 call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('sindrets/diffview.nvim', {
 \               'depends':
-\                   ['nvim-lua/plenary.nvim',
-\                    'kyazdani42/nvim-web-devicons']})
+\                   ['plenary.nvim',
+\                    'nvim-web-devicons']})
+
+" Snippet engine
+call dein#add('hrsh7th/vim-vsnip')
 
 " Completion framework
 call dein#add('hrsh7th/nvim-cmp')
     " LSP completion source for nvim-cmp
     call dein#add('hrsh7th/cmp-nvim-lsp', {
-\                   'depends': 'hrsh7th/nvim-cmp'})
+\                   'depends': 'nvim-cmp'})
     " Snippet completion source for nvim-cmp
     call dein#add('hrsh7th/cmp-vsnip', {
-\                   'depends': 'hrsh7th/nvim-cmp'})
+\                   'depends': 'nvim-cmp'})
     " Other useful completion sources
     call dein#add('hrsh7th/cmp-path', {
-\                   'depends': 'hrsh7th/nvim-cmp'})
+\                   'depends': 'nvim-cmp'})
     call dein#add('hrsh7th/cmp-buffer', {
-\                   'depends': 'hrsh7th/nvim-cmp'})
+\                   'depends': 'nvim-cmp'})
 
 " See hrsh7th's other plugins for more completion sources!
 
-" Snippet engine
-call dein#add('hrsh7th/vim-vsnip')
+call dein#add('nvim-treesitter/nvim-treesitter')
 
 call dein#end()
 
