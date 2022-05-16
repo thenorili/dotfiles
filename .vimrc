@@ -99,6 +99,7 @@ set magic
 " Sets up invisibles, off by default; toggle with f3
 " :set listchars=tab:→\,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set listchars=tab:·⁖,trail:¶
+set directory^=$HOME/.vim/swap//
 set swapfile
 set autowrite
 

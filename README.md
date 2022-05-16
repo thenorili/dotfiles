@@ -5,16 +5,19 @@
 TODO: I want to get back these sorts of hotkeys for neovim or shell
 
   + M-d = 2020Jan31
-  
+
   + M-D = 2020-0131-1818
 
 TODO: I want DOSesque colors for VIM
 
 TODO: I want coc working properly
+    UPDATE: fuck coc, nvim-lsp is fine
 
 TODO: I want to get gtags genuinely working well
+    UPDATE: gtags.vim is working pretty well, but rusty-tags is not
 
 TODO: get things properly in folders
+    UPDATE: starting to get somewhere with this
 
 TODO: get automated push/pull working
 
