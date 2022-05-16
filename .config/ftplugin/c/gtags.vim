@@ -1,0 +1,1 @@
+/home/nori/dotfiles/.vim/plugin/gtags.vim

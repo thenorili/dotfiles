@@ -1,6 +1,10 @@
+--  vim.cmd("packadd packer.nvim")
+
 local function conf(config_name)
   return require(string.format("nvim-config.plugins.%s", config_name))
 end
+
+vim.g.slime_target = "neovim"
 
 return require'packer'.startup {
   ---@diagnostic disable-next-line: unused-local
@@ -13,6 +17,7 @@ return require'packer'.startup {
 --      use { 'kyazdani42/nvim-web-devicons', config = conf("nvim-web-devicons") }
       use { 'kyazdani42/nvim-web-devicons' }
       use { 'tpope/vim-fugitive' }
+      use 'jpalardy/vim-slime'
 
       -- THEMES
       use { 'rktjmp/lush.nvim' }

@@ -3,7 +3,7 @@ set editing-mode vi
 
 $if mode=vi
 # Displays whether currently in command or insert mode
-set show-mode-in-prompt on
+set show-mode-in-prompt off
 # Displays block cursor in cmd, pipe cursor in insert
 set vi-ins-mode-string \1\e[6 q\2
 set vi-cmd-mode-string \1\e[2 q\2
@@ -28,4 +28,7 @@ set mark-symlinked-directories On
 set colored-completion-prefix On
 # Color the common prefix in menu-complete
 set menu-complete-display-prefix On
+set show-all-if-ambiguous on
+"\e8": backward-word
+"\e12": forward-word
 $endif
