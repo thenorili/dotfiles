@@ -62,47 +62,63 @@ call dein#add('sindrets/diffview.nvim',
 
 call dein#end()
 
-filetype plugin on
+"""""""""""""'"""
+" -- General -- "
+"""""""""""""'"""
 
-syntax enable
+    filetype plugin on
+    syntax enable
+    set background=dark
+    " Set ColorColumn color (column number is set in fsplugins)
+    highlight ColorColumn ctermbg=red
+    " Enables 256 color mode over SSH
+    set t_Co=256
+    " Height of the command bar
+    set cmdheight=1
+    " A buffer becomes hidden when it is abandoned
+    set hid
+    " Configure backspace so it acts as it should act
+    set backspace=eol,start,indent
+    set whichwrap+=<,>,h,l
+    " Don't redraw while executing macros (good performance config)
+    set lazyredraw
+    " For regular expressions turn magic on
+    set magic
+    " Sets up invisibles, off by default; toggle with f3
+    " :set listchars=tab:→\,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+    set listchars=tab:·⁖,trail:¶
+    " Sets up vim swap and backup !!! need to call mkdir manually !!!
+    set directory=$HOME/.vim/swap//
+    set backupdir=$HOME/.vim/bkup//
+    set swapfile
+    set backup
+    set autowrite
+    "i forget what these do
+    set ls=2
+    set statusline=%F%m%r%h%w\ \ \ Line:\ %4l\ /\ %-4L\ \ \ Column:\ %-3v\ \ %p%%
+    " enable ripgrep searches with :grep, :cnext/:cprevious, :copen/:cclose
+    " TODO: map the quickfix commands
+    set grepprg=rg\ --vimgrep
+    set grepformat^=%f:%l:%c:%m
+    " Default to !read-only in vimdiff (and everywhere)
+    set noro
+    " i forget what this does tbh
+    set t_8b=[48;2;%lu;%lu;%lum
+    set t_8f=[38;2;%lu;%lu;%lum
 
-set background=dark
-
-
-" -- Misc
-
-
-
-
-" Highlight past column 80
-highlight ColorColumn ctermbg=red
-
-" Enables 256 color mode over SSH
-set t_Co=256
-
-" Height of the command bar
-set cmdheight=1
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
-
-" Sets up invisibles, off by default; toggle with f3
-" :set listchars=tab:→\,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-set listchars=tab:·⁖,trail:¶
-set directory^=$HOME/.vim/swap//
-set swapfile
-set autowrite
-
+" -- Line numbering
+    set ruler "current line gets number
+    set number
+    set relativenumber
+    set numberwidth=4
+    function TRelative()
+        set relativenumber!
+    endfunc
+    function TNumber()
+        set number!
+    endfunc
+    map <LEADER>r :call TRelative()<cr>
+    map <LEADER>n :call TNumber()<cr>
 
 " -- Search
     " Ignore case when searching
@@ -121,134 +137,82 @@ set autowrite
     set autoindent
 
 " -- Mappings
+    " Move a line of text using ALT-[jk]
+    nmap <m-j> mz:m+<cr>`z
+    nmap <m-k> mz:m-2<cr>`z
+    vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
+    vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" Move a line of text using ALT-[jk]
-nmap <m-j> mz:m+<cr>`z
-nmap <m-k> mz:m-2<cr>`z
-vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
+    " F3: Toggle list (display unprintable characters).
+    nnoremap <F3> :set list!<CR>
 
+    " <gf> defaults to creating new file when none can be found
+    :map gf :e <cfile><CR>
 
-" F3: Toggle list (display unprintable characters).
-nnoremap <F3> :set list!<CR>
+    " Terminal mode remappings
+    " Esc key should return you to normal mode
+    tnoremap <ESC> <C-\><C-n>
+    " C-v Esc should send a "verbatim esc" to the terminal
+    tnoremap <LEADER><Esc> <Esc>
+    " Ctrl-P should open FZF it exists
+    nnoremap <C-p> :FZF<CR>
+    nmap <M-h> gT
+    nmap <M-l> gt
 
-" <gf> defaults to creating new file when none can be found
-:map gf :e <cfile><CR>
-
-
-
-
-
-" -- Number width
-
-
-set ruler            "Always show current line number
-set number	        	"Line numbering is on by default
-set relativenumber   "Relative line number is on
-set numberwidth=4   	"Line number width
-
-function TRelative()	"This function toggles relative line numbering
-	set relativenumber!
-endfunc
-
-function TNumber()  	"This function toggles line numbering
-	set number!
-endfunc
-
-
-" Maps RLN toggle to \-r
-map <LEADER>r :call TRelative()<cr>
-
-" Maps LN toggle to \t
-map <LEADER>n :call TNumber()<cr>
-
-
-
-
+    " k+j in insert mode enters normal mode
+    inoremap kj <Esc>
 
 " -- Commenting
 
+    " Maps \[ to an open comment horizontal ruler
+    " map <Leader>[ i/*<Return> *----------------------------------------------------------------------<ESC>
 
-" Maps \[ to an open comment horizontal ruler
-" map <Leader>[ i/*<Return> *----------------------------------------------------------------------<ESC>
+    " Maps \] to a close comment horizontal ruler
+    " map <Leader>] i *----------------------------------------------------------------------<Return> */<ESC>
 
-" Maps \] to a close comment horizontal ruler
-" map <Leader>] i *----------------------------------------------------------------------<Return> */<ESC>
-
+"""""""""""""""""""""""""""""""
+" -- Plugin Customizations -- "
+"""""""""""""""""""""""""""""""
 " -- NerdCommenter
-
-
-" Adds one space after comment delimiters
-let g:NERDSpaceDelims = 1
-
-" Aligns line-wise comment delimiters to the left
-let g:NERDDefaultAlign = 'left'
-
-" Allows commenting empty lines
-let g:NERDCommentEmptyLines = 1
-
-" NERDCommenterToggle checks if selection is commented
-let g:NERDToggleCheckAllLines = 1
+    " Adds one space after comment delimiters
+    let g:NERDSpaceDelims = 1
+    " Aligns line-wise comment delimiters to the left
+    let g:NERDDefaultAlign = 'left'
+    " Allows commenting empty lines
+    let g:NERDCommentEmptyLines = 1
+    " NERDCommenterToggle checks if selection is commented
+    let g:NERDToggleCheckAllLines = 1
 
 " -- NERDTree
+    let NERDTreeShowHidden=1
 
-let NERDTreeShowHidden=1                " show dot files in NERDtree
+    " toggles NERDTree with ctrl-n
+    map <c-n> :NERDTreeToggle<CR>
+    map <c-N> :NERDTreeFind<CR>
+" -- DeleteTrailingWhitespace
+    let g:DeleteTrailingWhitespace=1
+    let g:DeleteTrailingWhitespace_Action='delete'
+" -- airline
+    let g:airline_powerline_fonts = 1      " enable powerline symbols
+    let g:airline_theme='powerlineish'      " set airline theme
+" -- OSCYank
+    " Shortcut for OSCYank to send text selected in visual mode to the host
+    " clipboard
+    vnoremap <leader>c :OSCYank<CR>
 
-  " toggles NERDTree with ctrl-n
-map <c-n> :NERDTreeToggle<CR>
-map <c-N> :NERDTreeFind<CR>
+    " Clipboard overrides for system-clipboard integration and SSH-TMUX-Forwarding
+    " copy the current text selection to the system clipboard
+    " if has('gui_running') || has('nvim') && exists('$DISPLAY')
+    "   noremap <Leader>c "+y
+    " else
+    "   " copy to attached terminal using the yank(1) script:
+    "   " https://github.com/sunaku/home/blob/master/bin/yank
+    "   noremap <silent> <Leader>c y:call system('yank > /dev/tty', @0)<Return>
+    " endif
 
-set ls=2
-set statusline=%F%m%r%h%w\ \ \ Line:\ %4l\ /\ %-4L\ \ \ Column:\ %-3v\ \ %p%%
-
-let g:DeleteTrailingWhitespace=1
-let g:DeleteTrailingWhitespace_Action='delete'
-
-set nobackup
-" set backupdir=$DBC_HOME/tmp/vim/backup
-set dir=$DBC_HOME/tmp/vim/swap
-
-let g:airline_powerline_fonts = 1      " enable powerline symbols
-let g:airline_theme='powerlineish'      " set airline theme
-
-" Shortcut for OSCYank to send text selected in visual mode to the host
-" clipboard
-vnoremap <leader>c :OSCYank<CR>
-
-" Clipboard overrides for system-clipboard integration and SSH-TMUX-Forwarding
-" copy the current text selection to the system clipboard
-" if has('gui_running') || has('nvim') && exists('$DISPLAY')
-"   noremap <Leader>c "+y
-" else
-"   " copy to attached terminal using the yank(1) script:
-"   " https://github.com/sunaku/home/blob/master/bin/yank
-"   noremap <silent> <Leader>c y:call system('yank > /dev/tty', @0)<Return>
-" endif
-
-
-" Terminal mode remappings
-" Esc key should return you to normal mode
-tnoremap <ESC> <C-\><C-n>
-" C-v Esc should send a "verbatim esc" to the terminal
-tnoremap <LEADER><Esc> <Esc>
-
-" Ctrl-P should open FZF it exists
-nnoremap <C-p> :FZF<CR>
-nmap <M-h> gT
-nmap <M-l> gt
-
-" enable ripgrep searches with :grep, :cnext/:cprevious, :copen/:cclose
-" TODO: map the quickfix commands
-set grepprg=rg\ --vimgrep
-set grepformat^=%f:%l:%c:%m
-
-" Default to !read-only in vimdiff
-set noro
-
-inoremap kj <Esc>
-
-set t_8b=[48;2;%lu;%lu;%lum
-set t_8f=[38;2;%lu;%lu;%lum
+""""""""""""""""""""""
+" -- Autocommands -- "
+""""""""""""""""""""""
 
 if !exists("autocommands_loaded")
    let autocommands_loaded=1
