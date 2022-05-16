@@ -1,5 +1,3 @@
-lua require('lspconfig').rust_analyzer.setup{}
-
 function SaveAndMake()
    write
    execute '!cargo check'

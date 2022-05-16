@@ -16,11 +16,19 @@ call dein#add('scrooloose/nerdtree.git')
 
 call dein#add('godlygeek/tabular.git')
 
-call dein#add('plasticboy/vim-markdown.git', {'on_ft': 'markdown'})
+call dein#add('plasticboy/vim-markdown.git', {
+\                'on_ft': 'markdown'})
 
 call dein#add('tpope/vim-fugitive.git')
+call dein#add('christoomey/vim-conflicted.git', {
+\               'depends': 'tpope/vim-fugitive.git'})
 
-call dein#add('christoomey/vim-conflicted.git')
+call dein#add('mhinz/vim-signify')
+
+call dein#add('airblade/vim-gitgutter', {
+\               'depends':
+\                   ['tpope/vim-fugitive.git',
+\                    'mhinz/vim-signify']})
 
 call dein#add('flazz/vim-colorschemes.git')
 
@@ -31,17 +39,14 @@ call dein#add('Yggdroot/indentLine.git')
 call dein#add('vimoutliner/VimOutliner.git')
 
 call dein#add('edkolev/tmuxline.vim')
-
 call dein#add('vim-airline/vim-airline')
-
 call dein#add('vim-airline/vim-airline-themes', {
-            \    'depends': 'vim-airline/vim-airline'})
+\               'depends': 'vim-airline/vim-airline'})
 
 call dein#add('inkarkat/vim-ingo-library')
 
 call dein#add('inkarkat/vim-DeleteTrailingWhitespace')
 
-call dein#add('mhinz/vim-signify')
 
 call dein#add('dag/vim-fish.git')
 
@@ -49,16 +54,31 @@ call dein#add('junegunn/fzf.git')
 
 call dein#add('ojroques/vim-oscyank.git')
 
-call dein#add('airblade/vim-gitgutter')
-
 call dein#add('nvim-lua/plenary.nvim')
-
 call dein#add('kyazdani42/nvim-web-devicons')
+call dein#add('sindrets/diffview.nvim', {
+\               'depends':
+\                   ['nvim-lua/plenary.nvim',
+\                    'kyazdani42/nvim-web-devicons']})
 
-call dein#add('sindrets/diffview.nvim',
-            \    {'depends':
-            \        ['nvim-lua/plenary.nvim',
-            \         'kyazdani42/nvim-web-devicons']})
+" Completion framework
+call dein#add('hrsh7th/nvim-cmp')
+    " LSP completion source for nvim-cmp
+    call dein#add('hrsh7th/cmp-nvim-lsp', {
+\                   'depends': 'hrsh7th/nvim-cmp'})
+    " Snippet completion source for nvim-cmp
+    call dein#add('hrsh7th/cmp-vsnip', {
+\                   'depends': 'hrsh7th/nvim-cmp'})
+    " Other useful completion sources
+    call dein#add('hrsh7th/cmp-path', {
+\                   'depends': 'hrsh7th/nvim-cmp'})
+    call dein#add('hrsh7th/cmp-buffer', {
+\                   'depends': 'hrsh7th/nvim-cmp'})
+
+" See hrsh7th's other plugins for more completion sources!
+
+" Snippet engine
+call dein#add('hrsh7th/vim-vsnip')
 
 call dein#end()
 
@@ -105,6 +125,7 @@ call dein#end()
     " i forget what this does tbh
     set t_8b=[48;2;%lu;%lu;%lum
     set t_8f=[38;2;%lu;%lu;%lum
+    set omnifunc=v:lua.vim.lsp.omnifunc
 
 " -- Line numbering
     set ruler "current line gets number
