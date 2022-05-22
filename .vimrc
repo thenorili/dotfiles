@@ -83,6 +83,8 @@ call dein#add('hrsh7th/nvim-cmp')
 
 call dein#add('nvim-treesitter/nvim-treesitter')
 
+call dein#add('vimwiki/vimwiki')
+
 call dein#end()
 
 """""""""""""'"""
@@ -212,7 +214,7 @@ call dein#end()
 
     " toggles NERDTree with ctrl-n
     map <c-n> :NERDTreeToggle<CR>
-    map <c-N> :NERDTreeFind<CR>
+    map <c-s-N> :NERDTreeFind<CR>
 " -- DeleteTrailingWhitespace
     let g:DeleteTrailingWhitespace=1
     let g:DeleteTrailingWhitespace_Action='delete'
@@ -233,6 +235,10 @@ call dein#end()
     "   " https://github.com/sunaku/home/blob/master/bin/yank
     "   noremap <silent> <Leader>c y:call system('yank > /dev/tty', @0)<Return>
     " endif
+
+let g:vimwiki_list = [{
+    \    'path': '~/dev/web/thenorili/',
+    \    'path_html': '~/dev/web/thenorili/public_html'}]
 
 """"""""""""""""""""""
 " -- Autocommands -- "
