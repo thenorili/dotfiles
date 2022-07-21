@@ -1,2 +1,2 @@
-alias ll='ls -Flrt --color --group-directories-first'
+alias ll='ls -FhArtl --color --group-directories-first'
 alias xmut='tmux new -As 0'
