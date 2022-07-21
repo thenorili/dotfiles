@@ -85,6 +85,8 @@ call dein#add('nvim-treesitter/nvim-treesitter')
 
 call dein#add('vimwiki/vimwiki')
 
+call dein#add('tpope/vim-unimpaired')
+
 call dein#end()
 
 """""""""""""'"""
