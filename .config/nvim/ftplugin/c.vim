@@ -2,7 +2,7 @@ lua require('lspconfig').clangd.setup{}
 
 setlocal cindent
 
-function SaveAndMake()
+function SaveAndMake!()
     write
     exec '!silent test -f ./CMakeLists.txt'
     if !v:shell_error
