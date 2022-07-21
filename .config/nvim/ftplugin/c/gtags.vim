@@ -1,9 +1,13 @@
 " nori's cscope settings -- based on Jeff's cscope settings, whoever Jeff is
-function FindAndAddGtags()
+function GtagsAdd()
    let found = 0
    let iter = 0
+   set csto=1
+   set cst
+   set cscopetag
    while iter < 1
       "first try
+      set csprg=gtags-cscope\ -C
       let g:gtagsdir = substitute(system("global -p -q"), '[[:cntrl:]]', '', 'g')
       echom g:gtagsdir
       if !v:shell_error && g:gtagsdir != ""
@@ -23,13 +27,11 @@ function FindAndAddGtags()
       "third try
       let g:cscopedir = substitute(system("findup cscope.out"), '[[:cntrl:]]', '', 'g')
       if !v:shell_error
-         setlocal csprg=cscope
+         set csprg=cscope\ -C
          echom "Executing cs add ".g:gtagsdir."cscope.out from findup"
          execute "cs add ".g:cscopedir."/cscope.out"
          let found = 1
          break
-      else
-         setlocal csprg&
       endif
       let iter = 1
    endwhile
@@ -39,19 +41,12 @@ function FindAndAddGtags()
    return found
 endfunction
 
-if has("cscope")
+let loadonce = 0
+if has("cscope") && loadonce == 0
+   let loadonce = 1
    " gtags cscope:
    let iter = 0
    while iter < 1
-      let taggart = FindAndAddGtags()
-      if taggart != 0
-         let iter = 1
-         break
-      endif
-      setlocal csprg=gtags-cscope
-      setlocal csto=1
-      setlocal cst
-      setlocal cscopetag
       " Using 'CTRL-\' then a search type makes the vim window
       " "shell-out", with search results displayed on the bottom
       nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -88,7 +83,7 @@ if has("cscope")
    endwhile
 endif
 
-function UpdateGtags()
+function GtagsUpdate()
 "    let g:gtagsdir = system("findup GTAGS")
 "    if !v:shell_error
 "        execute "cs add ".g:gtagsdir."/GTAGS"
@@ -107,8 +102,13 @@ function UpdateGtags()
    endif
 endfunction
 
-command GtagsUpdate call UpdateGtags()
-nmap <silent> <C-g> :GtagsUpdate<CR>
+function GtagsInit()
+   call GtagsAdd()
+   call GtagsUpdate()
+endfunction
 
-command GtagsAdd call FindAndAddGtags()
-nmap <silent> <M-g> :GtagsAdd<CR>
+command GtagsUp call GtagsUpdate()
+nmap <silent> <C-g> :GtagsUp<CR>
+
+command Gtags call GtagsInit()
+nmap <silent> <M-g> :Gtags<CR>
