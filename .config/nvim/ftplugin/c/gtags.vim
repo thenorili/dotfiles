@@ -84,16 +84,6 @@ if has("cscope") && loadonce == 0
 endif
 
 function GtagsUpdate()
-"    let g:gtagsdir = system("findup GTAGS")
-"    if !v:shell_error
-"        execute "cs add ".g:gtagsdir."/GTAGS"
-"    else
-"        let g:cscopedir = system("findup cscope.out")
-"        if !v:shell_error
-"            set csprg=cscope
-"            execute "cs add ".g:cscopedir."/cscope.out"
-"        endif
-"    endif
    execute "silent !global -u | cs reset &"
    if v:shell_error
       echom "Failed to update tags database"

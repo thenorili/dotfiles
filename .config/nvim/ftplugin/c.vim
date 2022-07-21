@@ -1,5 +1,3 @@
-lua require('lspconfig').clangd.setup{}
-
 setlocal cindent
 
 function SaveAndMake!()
