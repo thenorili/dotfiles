@@ -1,4 +1,4 @@
-XTerm*faceName: xft:mononoki Nerd Font Mono:size=18
+XTerm*faceName: xft:mononoki Nerd Font Mono:size=14
 /*XTerm*faceSize: 20*/
 XTerm*loginShell: true
 XTerm*saveLines:65500

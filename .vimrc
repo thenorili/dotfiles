@@ -2,11 +2,11 @@ if &compatible
     set nocompatible
 endif
 filetype off
-set runtimepath+=/home/nori/.vim/bundle/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.local/share/bundle/dein/repos/github.com/Shougo/dein.vim
 set rtp+=~/.vim
-call dein#begin('/home/nori/.vim/bundle/dein')
+call dein#begin('$HOME/.local/share/bundle/dein')
 
-call dein#add('/home/nori/.vim/bundle/dein/repos/github.com/Shougo/dein.vim')
+call dein#add('$HOME/.local/share/bundle/dein/repos/github.com/Shougo/dein.vim')
 
 call dein#add('neovim/nvim-lspconfig')
 

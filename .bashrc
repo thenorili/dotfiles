@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-set -x
+# set -x
 
 
 
@@ -102,4 +102,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-set +x
+# set +x

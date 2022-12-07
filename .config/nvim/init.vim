@@ -4,14 +4,14 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.local/share/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin("$HOME/.cache/dein")
+call dein#begin("$HOME/.local/share/dein")
 
 " Let dein manage dein
 " Required:
-call dein#add("$HOME/.cache/dein/repos/github.com/Shougo/dein.vim")
+call dein#add("$HOME/.local/share/dein/repos/github.com/Shougo/dein.vim")
 
 
 " Shows file system in a tree on the left-hand side of nvim

@@ -33,6 +33,10 @@ if [ -f "$HOME/.cargo/env" ] ; then
    . "$HOME/.cargo/env"
 fi
 
+if [ -f "$HOME/linuxbrew/.linuxbrew/bin/brew" ] ; then
+   eval "$HOME/linuxbrew/.linuxbrew/bin/brew" shellenv
+fi
+
 # environmental variables get their own file
 if [ -f "$HOME/.env" ] ; then
    . "$HOME/.env"
