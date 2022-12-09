@@ -24,3 +24,8 @@ TODO: get automated push/pull working
 TODO: get some of my fish functions imported
 
 TODO: push my inner tmux.conf files here
+
+2022 12 09
+could this be moved or removed?
+
+what about a separate folder for the stuff that is copied?
