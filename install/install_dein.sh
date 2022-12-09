@@ -6,13 +6,13 @@ set -e
 KEEP_CONFIG=yes
 
 # Store the dein.vim base path location (eg. '~/.cache/dein')
-BASE='~/.cache/dein'
+BASE='~/.local/share/dein'
 
 # Store the vim config path location (eg. '~/.vimrc')
 VIMRC='~/.vimrc'
 
 # Store the dein.vim path location (eg. '~/.cache/dein/repos/github.com/Shougo/dein.vim')
-DEIN='~/.cache/dein/repos/github.com/Shougo/dein.vim'
+DEIN="$BASE/repos/github.com/Shougo/dein.vim"
 
 AUTHOR="Shougo"
 VERSION="3.0"

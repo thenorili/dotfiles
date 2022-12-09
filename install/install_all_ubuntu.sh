@@ -25,7 +25,7 @@ main() {
     # or do we want this to install over other stuff?
     echo "Copying config files into home directory"
     # assumes .../dotfiles/install_scripts, copies this to home
-    rsync -r "$0/../" ~/
+    rsync -r "$0/../../dotfiles/home/" ~/
 
     echo "Installing key packages with apt package manager"
     sudo apt update -y
