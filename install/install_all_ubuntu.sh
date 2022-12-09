@@ -17,6 +17,8 @@ Packages=(\
     # fish shell
     "fish")
 
+INSTALL_DIR=$(dirname -- "$( readlink -f -- "$0"; )")
+
 # AllInstalled=(${packages} +\
 #    "llvm-toolchain" "rust" "dein.vim" "tpm" "brew" "oh-my-fish" "discord"
 
@@ -25,15 +27,16 @@ main() {
     # or do we want this to install over other stuff?
     echo "Copying config files into home directory"
     # assumes .../dotfiles/install_scripts, copies this to home
-    rsync -r "$0/../../dotfiles/home/" ~/
+    rsync -r "$INSTALL_DIR/../../dotfiles/home/" ~/
 
     echo "Installing key packages with apt package manager"
     sudo apt update -y
 
     List=""
-    for Package in Packages; do
-        $List += "${Package}"
+    for Package in ${Packages}; do
+        List+="${Package}"
     done
+    echo "Running `sudo apt install -y ${LIST}`"
     sudo apt install -y "${List}"
 
     echo "Installing LLVM toolchain"
@@ -66,4 +69,4 @@ main() {
     sudo snap install discord
 }
 
-main()
+main
