@@ -8,7 +8,7 @@ set -e
 Packages=(\
     # essential utilities
     "curl" "firefox" "git" \
-    "nvim" "tmux" "fd-find" \
+    "neovim" "tmux" "fd-find" \
     "ripgrep" "rsync" "snapd" \
     # development tools for c and shell
     "gdb" "shellcheck" \
@@ -32,6 +32,7 @@ main() {
     echo "Installing key packages with apt package manager"
     sudo apt update -y
 
+    # FIXME: this is broken, doesn't work at all
     List=""
     for Package in ${Packages}; do
         List+="${Package}"
@@ -42,7 +43,7 @@ main() {
     echo "Installing LLVM toolchain"
     curl -O https://apt.llvm.org/llvm.sh
     chmod +x llvm.sh
-    sudo ./llvm.sh all
+    yes <enter> | sudo ./llvm.sh all
     rm llvm.sh
 
     # could test for these before installing
@@ -53,14 +54,15 @@ main() {
     curl https://sh.rustup.rs -sSf | sh -s -- -y
 
     echo "Installing dein"
-    ~/install_scripts/install_dein.sh -uNC
+    $0/install_dein.sh -uNC
 
     echo "Installing tpm"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-    echo "Installing brew"
-    ~/install_scripts/install_brew.sh
-    brew install nushell -y
+    ### really long install - separate this into an optional script
+    # echo "Installing brew"
+    # $0/install_brew.sh
+    # brew install nushell -y
 
     echo "Installing ohmyfish"
     curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
